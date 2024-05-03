@@ -1,0 +1,20 @@
+<header>
+    <h2 id="userName">hello {{userDetails.name}}</h2>
+    <a href="">💼profession: {{userDetails.profession}}</a>
+    <p>📃counter of sending resumes: {{resumes}}</p>
+    <br>
+    
+    <nav>
+        <ul>
+            <li routerLink="/login" routerLinkActive="active">login</li>
+        </ul>
+    </nav>
+
+    <!-- <a  href="" (click)="login"><img src="../../../logo.jpg" alt="login"></a> -->
+    <router-outlet></router-outlet>
+</header>
+
+<footer>
+    <h2>contact details</h2>
+    <p>email...</p>
+</footer>
