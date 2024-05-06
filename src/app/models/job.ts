@@ -1,5 +1,7 @@
+import { Profession } from "./profession"
+
 export interface Job{
-    proffession:string
+    profession:Profession
     name:string
     range:number
     area:string

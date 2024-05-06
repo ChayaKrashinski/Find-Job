@@ -4,8 +4,27 @@
     font-style: oblique;
 }
 header{
-    margin-bottom: 25px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(157, 255, 255);
+}
+.header{
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
 }
 footer{
-    margin-top: 200px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: cornsilk;
+}
+#logo{
+    width: 100px;
 }

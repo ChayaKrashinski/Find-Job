@@ -4,36 +4,35 @@ import { User } from '../../models/user';
 import { LoginComponent } from '../login/login.component';
 import { link } from 'fs';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { JobsListComponent } from '../jobs-list/jobs-list.component';
+import { UsersServisce } from '../../services/users.service';
+import { Profession } from '../../models/profession';
+import { JobsServisce } from '../../services/jobs.service';
+import { privateDecrypt } from 'crypto';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [LoginComponent, RouterOutlet, HomeComponent, RouterLink, RouterLinkActive],
+  imports: [LoginComponent, JobsListComponent, RouterOutlet, HomeComponent, RouterLink, RouterLinkActive],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  // userDetails = localStorage.getItem("user");
-  userDetails={id:123, password:"456", name:"chaya", profession:"computers"}
-  // resumes = localStorage.getItem("resumesCounter");
-  resumes = 9;
-  constructor(private r: Router){}
-  login = () => {
-    // this.r.navigate(['/login'])
-    //כאן יתרחש ניווט ללוגין
+  userName: string | null = 'user'
+  userProfession: string | null = Profession[Profession.admins]
+  resumes: null | string = '0';
+
+  // userDetails() {
+  //   this.userName = localStorage.getItem('userName');
+  //   this.resumes = localStorage.getItem("resumeCount");
+  //   this.userProfession = localStorage.getItem('profession')
+  // }
+  
+  
+
+  constructor(private r: Router, private usersServices: UsersServisce, private jobsServices: JobsServisce) {
   }
 
-
 }
-
-// import { Component } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-// import { HomeComponent } from './components/home/home.component';
-
-// @Component({
-//   selector: 'app-root',
-//   standalone: true,
- 

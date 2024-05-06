@@ -8,25 +8,29 @@ import { JobsListComponent } from './components/jobs-list/jobs-list.component'
 import { JobDetailsComponent } from './components/job-details/job-details.component'
 import { FormsModule, NgForm, NgModel, ReactiveFormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common'
-import { RouterModule } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http'
 import { routes } from './app.routes'
+import { Router } from '@angular/router'
+import { UsersServisce } from './services/users.service'
+import { JobsServisce } from './services/jobs.service'
 
 @NgModule({
     imports: [
 
         BrowserModule,
-        RouterModule,
+        RouterModule.forRoot(routes, {useHash:true}),
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        routes,
+        Router,
+        UsersServisce,
 
     //   NgModule,
     //    NgForm,
     //     NgModel,
     //     ReactiveFormsModule,
-    //      CommonModule
+        CommonModule
     ],
     providers:[provideClientHydration()],
     declarations: [AppComponent, HomeComponent, LoginComponent, JobComponent, JobsListComponent, JobDetailsComponent, ],

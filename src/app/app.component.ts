@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { UsersServisce } from './services/users.service';
 
 @Component({
   selector: 'app-root',

@@ -1,15 +1,4 @@
-<div>
-    <select name="" id="orderByProf">
-        <option value="computers"></option>
-        <option value="computers"></option>
-        <option value="computers"></option>
-        <option value="computers"></option>
-        <option value="computers"></option>
-    </select>
-
-    <select name="" id="orderByArea">
-        <option value="computers">jerusalem</option>
-        <option value="computers">north</option>
-        <option value="computers">south</option>
-    </select>
+<h1>your corrent jobs list</h1>
+<div *ngFor="let j of jobsList">
+    <app-job [jobData]=j></app-job>
 </div>
