@@ -9,6 +9,8 @@ import { routes } from '../../app.routes';
 import { JobsListComponent } from '../jobs-list/jobs-list.component';
 import { UsersServisce } from '../../services/users.service';
 import { Profession } from '../../models/profession';
+import { JobsServisce } from '../../services/jobs.service';
+import { Job } from '../../models/job';
 
 
 @Component({
@@ -20,21 +22,21 @@ import { Profession } from '../../models/profession';
 })
 export class LoginComponent {
 
-  constructor(private r: Router, private userService: UsersServisce) { }
+  constructor(private r: Router, private userService: UsersServisce, private jobsServices:JobsServisce) { }
 
   user = { name: "", password: "" };
-
   loginClick() {
     if (this.user.password.trim().length < 8)
       alert('the password not contain spaces')
     else {
-      const res = this.userService.FindUser(this.user);
-
+      const res = this.userService.FindUser(this.user.name, this.user.password);
       if (res) {
-        localStorage.setItem("userName", JSON.stringify(res.name));
+
+        localStorage.setItem('user', JSON.stringify({name:res.name, profession:res.proffession}))
+        // localStorage.setItem("userName", JSON.stringify(res.name));
         localStorage.setItem("resumesCount", '0')
-        localStorage.setItem('profession', Profession[res.proffession])
-        this.r.navigate(['/jobsPage', {myProfession:res.proffession}]);
+        // localStorage.setItem('profession', Profession[res.proffession])
+        this.r.navigate(['/jobsPage']);
       }
       else
         alert("the user dont found")

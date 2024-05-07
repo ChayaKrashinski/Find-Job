@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Job } from '../../models/job';
 
 @Component({
   selector: 'app-job-details',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './job-details.component.scss'
 })
 export class JobDetailsComponent {
-
+  @Input() details: Job | undefined
 }

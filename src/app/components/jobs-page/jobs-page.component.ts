@@ -1,5 +1,5 @@
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { JobComponent } from '../job/job.component';
 import { Job } from '../../models/job';
 import { Component, EventEmitter, Output, Input } from '@angular/core';
@@ -10,6 +10,8 @@ import { NgModule } from '@angular/core';
 import { JobsServisce } from '../../services/jobs.service';
 import { User } from '../../models/user';
 import { JobsListComponent } from '../jobs-list/jobs-list.component';
+import { OnInit } from '@angular/core';
+import { Router } from 'express';
 @Component({
   selector: 'app-jobs-page',
   standalone: true,
@@ -18,35 +20,48 @@ import { JobsListComponent } from '../jobs-list/jobs-list.component';
   styleUrl: './jobs-page.component.scss'
 })
 export class JobsPageComponent {
-  @Input()
-  myProfession!: Profession;
-  constructor(private jobsServisce: JobsServisce) {
-    this.jobsList = this.jobsServisce.getJobsListByProfession(this.myProfession);
-  }
   professions = [Profession[0], Profession[1], Profession[2], Profession[3], Profession[4]]
-  profession:Profession|null=null
+  profession: Profession | null = null
   area = '-'
   // p:User=JSON.parse(localStorage.getItem("user")+'')
-  jobsList: Job[]|null=[]
+  jobsList: Job[] | null = []
   messege = ''
+
+
+  ngOnInit() {
+    this.jobsList = this.jobsServisce.getAllJobs();
+    this.activedRouter.paramMap.subscribe(params=>{
+      let p = params.get('profession')
+      if(p!=null)
+        this.jobsList = this.jobsServisce.orderByProf(p);
+    })
+  }
+  constructor(private jobsServisce: JobsServisce, private r:Router, private activedRouter:ActivatedRoute) {
+    this.profession = this.GetUser().profession;
+  }
+
   orderByProf() {
     this.messege = '🔍'
-    setTimeout((()=>{
-      this.jobsList = this.jobsServisce.orderByProf(this.myProfession, this.jobsList)
+    setTimeout((() => {
+      this.jobsList = this.jobsServisce.orderByProf(this.profession)
       this.messege = ''
-      if (this.jobsList == null) 
+      if (this.jobsList == null)
         this.messege = 'sorry, but there arent jobs by this filter'
-    }),1000 )
+    }), 1000)
 
+
+  }
+  GetUser() {
+    return JSON.parse(localStorage.getItem('user') + '')
   }
   orderByArea() {
     this.messege = '🔍'
-    setTimeout((()=>{
-      this.jobsList = this.jobsServisce.orderByArea(this.area, this.jobsList)
+    setTimeout((() => {
+      this.jobsList = this.jobsServisce.orderByArea(this.area)
       this.messege = ''
-      if (this.jobsList == null) 
+      if (this.jobsList == null)
         this.messege = 'sorry, but there arent jobs by this filter'
-    }),1000 )
+    }), 1000)
 
   }
 

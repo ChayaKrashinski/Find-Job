@@ -8,6 +8,7 @@ import { Profession } from '../models/profession';
   providedIn: 'root'
 })
 export class JobsServisce {
+  
   constructor(private http: HttpClient) {
     this.getAllJobsFromServer();
   }
@@ -36,14 +37,18 @@ export class JobsServisce {
     return [Profession[0], Profession[1], Profession[2], Profession[3], Profession[0]]
   }
 
-  getJobsListByProfession(profession: Profession | null) {
+  getJobsListByProfession(profession: Profession | null | string) {
     if (profession)
       return this.jobsList.filter(j => j.profession == profession!)
     else return null;
   }
-  orderByProf(p: Profession | null, list: Job[] | null) { if (list && p) return list!.filter(j => j.profession == p)
-    else return null}
-  orderByArea(a: string | null, list: Job[] | null) { if (a && list) return list!.filter(j => j.area == a) 
-  else return null}
-
+  orderByProf(p: Profession | null| string |any) {
+    if (p) return this.jobsList!.filter(j => j.profession == p||j.profession.valueOf()==p)
+    else return null
+  }
+  orderByArea(a: string | null) {
+    if (a) return this.jobsList!.filter(j => j.area == a)
+    else return null
+  }
+  getAllJobs() { return this.jobsList }
 }

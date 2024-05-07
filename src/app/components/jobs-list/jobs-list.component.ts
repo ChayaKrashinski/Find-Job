@@ -8,6 +8,7 @@ import { JobDetailsComponent } from '../job-details/job-details.component';
 import { Profession } from '../../models/profession';
 import { NgModule } from '@angular/core';
 import { JobsServisce } from '../../services/jobs.service';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-jobs-list',
@@ -18,6 +19,9 @@ import { JobsServisce } from '../../services/jobs.service';
 })
 export class JobsListComponent {
   professions:string[]|null=null
+  OnInit(){
+  }
+
   @Input() jobsList:Job[]|null=null;
 
   constructor(private jobsService:JobsServisce){

@@ -9,8 +9,8 @@ import { UsersServisce } from '../../services/users.service';
 import { Profession } from '../../models/profession';
 import { JobsServisce } from '../../services/jobs.service';
 import { privateDecrypt } from 'crypto';
-
-
+import { OnInit } from '@angular/core';
+import { OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -20,19 +20,27 @@ import { privateDecrypt } from 'crypto';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  jobsPage() {
+    this.r.navigate(['/jobsPage/'+this.user.profession]);
+  }
+
+  ngOnInit() {
+    this.user = this.GetUser()
+    this.userName = this.user.name;
+    this.resumes = localStorage.getItem("resumeCount");
+    this.userProfession = Profession[this.user.profession]
+  }
   userName: string | null = 'user'
-  userProfession: string | null = Profession[Profession.admins]
+  userProfession: string | null = '-'
   resumes: null | string = '0';
+  user!: { name: string; profession: number; };
 
-  // userDetails() {
-  //   this.userName = localStorage.getItem('userName');
-  //   this.resumes = localStorage.getItem("resumeCount");
-  //   this.userProfession = localStorage.getItem('profession')
-  // }
-  
-  
+  constructor(private r: Router) {
 
-  constructor(private r: Router, private usersServices: UsersServisce, private jobsServices: JobsServisce) {
+  }
+
+  GetUser() {
+    return JSON.parse(localStorage.getItem('user') + '')
   }
 
 }

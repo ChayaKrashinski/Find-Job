@@ -24,7 +24,7 @@ import { JobsServisce } from './services/jobs.service'
         ReactiveFormsModule,
         HttpClientModule,
         Router,
-        UsersServisce,
+
 
     //   NgModule,
     //    NgForm,
@@ -33,8 +33,8 @@ import { JobsServisce } from './services/jobs.service'
         CommonModule
     ],
     providers:[provideClientHydration()],
-    declarations: [AppComponent, HomeComponent, LoginComponent, JobComponent, JobsListComponent, JobDetailsComponent, ],
-    bootstrap: [AppComponent]
+    declarations:[AppComponent, HomeComponent, LoginComponent, JobComponent, JobsListComponent, JobDetailsComponent, ],
+    // bootstrap: []
 })
 
 export class AppModule { }

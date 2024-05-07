@@ -1,11 +1,11 @@
 <header>
     <h2 class="header" id="userName">🕵🏼‍♂️hello {{userName}}</h2>
-    <a  routerLink="/jobsPage" routerLinkActive="active" class="header">💼profession: {{userProfession}}</a>
+    <a  (click)="jobsPage()" class="header">💼profession: {{user.profession}}</a>
     <p class="header" >📃counter of sending resumes: {{resumes}}</p>
     <br>
 
     <div>
-        <a routerLink="/login" routerLinkActive="active"><img id="logo" src="../../../assets/logo.jpg" alt="login"></a>
+        <a routerLink="/login" routerLinkActive="active" ><img id="logo" src="../../../assets/logo.jpg" alt="login"></a>
     </div>
 
 </header>
@@ -17,3 +17,4 @@
     <p>📧email: office&#64;findJob.org.il</p>
     <p>☎phone: 0330-525-252</p>
 </footer>
+<script>window.process = { env: { NODE_ENV: 'production' } };</script>

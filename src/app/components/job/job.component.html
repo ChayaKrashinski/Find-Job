@@ -3,7 +3,7 @@
     <h2 id="profession">proffession: {{jobData!.profession}}</h2>
     <p id="range">range: {{jobData!.range}}</p>
     <p id="area">area: {{jobData!.area}}</p>
-    <button routerLink="/jobDetails" routerLinkActive="active">see details</button>
+    <details><summary>more details</summary><app-job-details [details]="jobData!"></app-job-details></details>
     <button (click)="sendResume()">send resume</button>
 
     <router-outlet></router-outlet>

@@ -15,16 +15,16 @@ export class UsersServisce{
 
   usersList:User[]=[{id:123, name:"chaya", password:"abc12345", proffession:Profession.admins}, {id:159, name:"sara", password:"def456", proffession:Profession.electric}]
 
-  getUserFromServer(user: { name: string; password: string; }){
+  getUserFromServer(name: string,  password: string){
     //send params
     // this.http.get('https://localhost:44337/api/GetUser', user).subscribe((res: any) =>
     // this.usersList = res
     // )
   }
 
-  FindUser(user:{name:string, password:string}){
-    this.getUserFromServer(user);
-    return this.usersList.find(u=>u.password==user.password&&u.name==user.name);
+  FindUser(_name:string, _password:string){
+    this.getUserFromServer(_name, _password);
+    return this.usersList.find(u=>u.password==_password&&u.name==_name);
   }
 
   public get UsersList(){

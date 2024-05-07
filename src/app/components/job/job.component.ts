@@ -9,22 +9,26 @@ import { JobDetailsComponent } from '../job-details/job-details.component';
 @Component({
   selector: 'app-job',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet, JobDetailsComponent],
+  imports: [JobDetailsComponent, CommonModule, RouterLink, RouterLinkActive, RouterOutlet, JobDetailsComponent],
   templateUrl: './job.component.html',
   styleUrl: './job.component.scss'
 })
 export class JobComponent {
-  @Input() jobData: Job | null = null;
-  constructor(private jobsServisce:JobsServisce){}
 
-  sendResume(){
-    
-    let cr:Number=parseInt(localStorage.getItem("resumeCount")+'')
-    if(typeof cr == 'number')
-      cr=cr+1
-    else cr=1
+  ngOnInit() {
+  }
+
+  @Input() jobData: Job | null = null;
+  constructor(private r: Router, private jobsServisce: JobsServisce) { }
+
+  sendResume() {
+
+    let cr: Number = parseInt(localStorage.getItem("resumeCount") + '')
+    if (typeof cr == 'number')
+      cr = cr + 1
+    else cr = 1
     localStorage.setItem("resumeCount", JSON.stringify(cr));
-    if(this.jobData)
+    if (this.jobData)
       this.jobsServisce.addJob(this.jobData);
     alert('the resume has been sent successfully')
   }
