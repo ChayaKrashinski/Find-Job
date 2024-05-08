@@ -41,8 +41,8 @@ namespace server.Controllers
             return Ok(jobs);
         }
 
-        [HttpGet("GetUser")]
-        public ActionResult<User> GetUser(string? name, string? password)
+        [HttpPost("GetUser")]
+        public ActionResult<User> GetUser({string? name, string? password})
         {
             if(users==null)return null;
             return users.FirstOrDefault(u=>u.name.Equals(name)&&u.password.Equals(password));
