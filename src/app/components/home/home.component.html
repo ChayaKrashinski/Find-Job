@@ -1,6 +1,6 @@
 <header>
     <h2 class="header" id="userName">🕵🏼‍♂️hello {{userName}}</h2>
-    <a  (click)="jobsPage()" class="header">💼profession: {{userProfession}}</a>
+    <a  (click)="jobsPage()" class="header">💼profession: {{userProfession|ProfessionNamePipe}}</a>
     <p class="header" >📃counter of sending resumes: {{resumes}}</p>
     <br>
 

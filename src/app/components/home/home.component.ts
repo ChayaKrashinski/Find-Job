@@ -11,6 +11,7 @@ import { JobsServisce } from '../../services/jobs.service';
 import { privateDecrypt } from 'crypto';
 import { OnInit } from '@angular/core';
 import { OnChanges } from '@angular/core';
+import { ProfessionNamePipe } from '../../pipes/profession-name.pipe';
 
 @Component({
   selector: 'app-home',
@@ -25,13 +26,13 @@ export class HomeComponent {
     this.user = this.GetUser()
     this.userName = localStorage.getItem('name');
     this.resumes = localStorage.getItem("resumeCount");
-    this.userProfession = Profession[parseInt(localStorage.getItem('profession')!)]
+    this.userProfession = parseInt(localStorage.getItem('profession')!)
   }
   
   userName: string | null = 'user'
   resumes: null | string = '0';
   user: { name: string; profession: number; }={ name: 'string', profession: 2};
-  userProfession: string | null = null
+  userProfession: number | null = null
 
   constructor(private r: Router) {
   }
