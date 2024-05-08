@@ -8,22 +8,22 @@ import { Profession } from '../models/profession';
   providedIn: 'root'
 })
 export class JobsServisce {
-  
-  constructor(private http: HttpClient) {
+
+  ngOnInit(){
     this.getAllJobsFromServer();
+
   }
   
-  ///
-  jobsList: Job[] = [{ area: "north", fromHome: true, name: "job1", profession: Profession.electric, range: 4, requierment: "" }, { area: "south", fromHome: false, name: "job2", profession: Profession.admins, range: 14, requierment: "" }]
-  jobsResumeSend: Job[] = [{ area: "north", fromHome: true, name: "job1", profession: Profession.electric, range: 4, requierment: "" }]
+  constructor(private http: HttpClient) {
+  }
 
-  // jobsList:Job[]=[]
-  // jobsResumeSend:Job[]=[]
+  jobsList:Job[]=[]
+  jobsResumeSend:Job[]=[]
 
   getAllJobsFromServer() {
-    // this.http.get('https://localhost:44337/api/GetJobs').subscribe((res: any) =>
-    // this.jobsList = res
-    // ) 
+    this.http.get('https://localhost:7157/GetJobs').subscribe((res: any) =>
+    this.jobsList = res
+    ) 
   }
 
   addJob(jobData: Job) {
