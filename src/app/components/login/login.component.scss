@@ -10,3 +10,22 @@
     padding: 5%;
     // display: inline;
 }
+input{
+    color:#42A948;
+    font-size: xx-large;
+    margin: 5px;
+}
+button{
+    color: #42A948;
+    font-size: xx-large;
+    margin: 10px;
+}
+form{
+    color:#42A948;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(218, 248, 188);
+}

@@ -13,7 +13,7 @@ export class UsersServisce{
   constructor(private http:HttpClient) { 
   }
 
-  usersList:User[]=[{id:123, name:"chaya", password:"abc12345", proffession:Profession.admins}, {id:159, name:"sara", password:"def456", proffession:Profession.electric}]
+  usersList:User[]=[{id:123, name:"chaya", password:"abc12345", profession:Profession.admins}, {id:159, name:"sara", password:"def456", profession:Profession.electric}]
 
   getUserFromServer(name: string,  password: string){
     //send params

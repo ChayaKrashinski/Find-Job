@@ -20,27 +20,33 @@ import { OnChanges } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  jobsPage() {
-    this.r.navigate(['/jobsPage/'+this.user.profession]);
-  }
 
   ngOnInit() {
     this.user = this.GetUser()
-    this.userName = this.user.name;
+    this.userName = localStorage.getItem('name');
     this.resumes = localStorage.getItem("resumeCount");
-    this.userProfession = Profession[this.user.profession]
+    this.userProfession = Profession[parseInt(localStorage.getItem('profession')!)]
   }
+  
   userName: string | null = 'user'
-  userProfession: string | null = '-'
   resumes: null | string = '0';
-  user!: { name: string; profession: number; };
+  user: { name: string; profession: number; }={ name: 'string', profession: 2};
+  userProfession: string | null = null
 
   constructor(private r: Router) {
-
   }
 
   GetUser() {
     return JSON.parse(localStorage.getItem('user') + '')
   }
+  GetProfession()
+  {
+    return this.userProfession;
+  }
 
+  jobsPage() {
+    this.r.navigate(['/jobsPage']);
+    // this.r.navigate(['/jobsPage', {profession=this.userProfession}]);
+
+  }
 }

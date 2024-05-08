@@ -12,7 +12,8 @@ export class JobsServisce {
   constructor(private http: HttpClient) {
     this.getAllJobsFromServer();
   }
-
+  
+  ///
   jobsList: Job[] = [{ area: "north", fromHome: true, name: "job1", profession: Profession.electric, range: 4, requierment: "" }, { area: "south", fromHome: false, name: "job2", profession: Profession.admins, range: 14, requierment: "" }]
   jobsResumeSend: Job[] = [{ area: "north", fromHome: true, name: "job1", profession: Profession.electric, range: 4, requierment: "" }]
 
@@ -37,13 +38,13 @@ export class JobsServisce {
     return [Profession[0], Profession[1], Profession[2], Profession[3], Profession[0]]
   }
 
-  getJobsListByProfession(profession: Profession | null | string) {
+  getJobsListByProfession(profession: number|null) {
     if (profession)
-      return this.jobsList.filter(j => j.profession == profession!)
+      return this.jobsList.filter(j => Profession[j.profession] === Profession[profession])
     else return null;
   }
-  orderByProf(p: Profession | null| string |any) {
-    if (p) return this.jobsList!.filter(j => j.profession == p||j.profession.valueOf()==p)
+  orderByProf(p: number |any) {
+    if ( typeof parseInt(p) === "number") return this.jobsList!.filter(j => Profession[j.profession] == Profession[p]||j.profession.valueOf()==p)
     else return null
   }
   orderByArea(a: string | null) {

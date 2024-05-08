@@ -34,7 +34,7 @@ import { JobsServisce } from './services/jobs.service'
     ],
     providers:[provideClientHydration()],
     declarations:[AppComponent, HomeComponent, LoginComponent, JobComponent, JobsListComponent, JobDetailsComponent, ],
-    // bootstrap: []
+    bootstrap: []
 })
 
 export class AppModule { }

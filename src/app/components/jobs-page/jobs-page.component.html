@@ -5,7 +5,7 @@
         <div class="filters">
             <label for="orderByProf">profession</label>
             <select  name="profession" id="orderByProf" [(ngModel)]=profession (change)="orderByProf()">
-                <option *ngFor="let p of professions" value=p>{{p}}</option>
+                <option *ngFor="let p of professions" >{{p}}</option>
             </select>
         </div>
     
@@ -22,4 +22,6 @@
     <h2>{{messege}}</h2>
 
 </form>
+<h1>your current jobs list</h1>
+
 <app-jobs-list [jobsList]=jobsList></app-jobs-list>

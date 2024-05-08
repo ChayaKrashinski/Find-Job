@@ -22,6 +22,9 @@ import { Job } from '../../models/job';
 })
 export class LoginComponent {
 
+  ngOnInit(){
+    this.user = { name: "", password: "" };
+  }
   constructor(private r: Router, private userService: UsersServisce, private jobsServices:JobsServisce) { }
 
   user = { name: "", password: "" };
@@ -32,10 +35,10 @@ export class LoginComponent {
       const res = this.userService.FindUser(this.user.name, this.user.password);
       if (res) {
 
-        localStorage.setItem('user', JSON.stringify({name:res.name, profession:res.proffession}))
-        // localStorage.setItem("userName", JSON.stringify(res.name));
+        localStorage.setItem('user', JSON.stringify({name:res.name, profession:res.profession}))
+        localStorage.setItem("name", JSON.stringify(res.name));
         localStorage.setItem("resumesCount", '0')
-        // localStorage.setItem('profession', Profession[res.proffession])
+        localStorage.setItem('profession', Profession[res.profession])
         this.r.navigate(['/jobsPage']);
       }
       else
