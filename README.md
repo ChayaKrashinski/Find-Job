@@ -1,4 +1,4 @@
 # FindJob
 
-## the cliet side
+## the client side
 
