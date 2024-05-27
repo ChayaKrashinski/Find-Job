@@ -1,8 +1,0 @@
-<div>
-    <h1 id="name">{{jobData!.name}}</h1>
-    <h2 id="profession">proffession: {{profPipe}}</h2>
-    <p id="range">range: {{jobData!.range}}</p>
-    <p id="area">area: {{jobData!.area}}</p>
-    <details><summary>more details</summary><app-job-details [details]="jobData!"></app-job-details></details>
-    <button (click)="sendResume()">send resume</button>
-</div>
