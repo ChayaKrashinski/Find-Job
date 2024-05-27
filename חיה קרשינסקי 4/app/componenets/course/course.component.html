@@ -1,0 +1,25 @@
+<div>
+    <div>
+        <div>
+            <h2 [ngStyle]="{'color': (data?.hours ?? 0) < 30 ? (data?.hours ?? 0) > 60? 'green' :  'orange' :'red'}">
+                {{data? data.courseName: 'error'}}</h2>
+            <div [ngSwitch]="data?.type">
+                <p *ngSwitchCase="getCoursesTopic().frontal">teacher:
+                    {{data?.teacherName}}</p>
+                <p *ngSwitchCase="getCoursesTopic().computerized">teacher:
+                    {{data?.teacherName}}</p>
+                <p *ngSwitchCase="getCoursesTopic().computerized ">date of begin:
+                    {{data?.dateOfBegining}}</p>
+                <p *ngSwitchCase="getCoursesTopic().Laboratory">date of begin:
+                    {{data?.dateOfBegining}}</p>
+            </div>
+            <div>
+                <button id="rButton" (click)="updateRegister()"
+                    *ngIf="isRegister==false" disabled="(data?.dateOfBegining!> getTodayDate())&&">
+                    register </button>
+                <button id="cButton" (click)="updateRegister()" *ngIf="isRegister==true">Cencel</button>
+            </div>
+
+        </div>
+    </div>
+</div>

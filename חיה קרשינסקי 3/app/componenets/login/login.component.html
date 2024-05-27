@@ -1,0 +1,14 @@
+<form id="connectForm" #loginForm>
+    <h1>connection</h1>
+    <div>
+        <label for="name">name: </label>
+        <input type="text" [(ngModel)]="userName" placeholder="user name" required #n="ngModel" name="n">
+    </div>
+    <div>
+        <label for="code">code: </label>
+        <input type="text" [(ngModel)]="userCode" placeholder="user code" required #c="ngModel" name="c">
+    </div>
+    <br>
+    <button type="submit" (click)="connect()">login</button>
+    <div [hidden]="n.valid && c.valid" ></div>
+</form>

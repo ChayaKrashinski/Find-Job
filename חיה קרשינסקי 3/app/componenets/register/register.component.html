@@ -1,0 +1,17 @@
+<div>
+    <div>
+        <h1>our courses:</h1>
+        <div *ngFor="let c of allCourses">
+            <app-course [data]=c (register)="updateRegister($event)"></app-course>
+        </div>
+        <div>
+            <h1>your courses:</h1>
+            <div id="r" *ngFor="let r of Iregister">
+                <h4>{{r?.courseName}}</h4>
+            </div>
+            <button (click)="cencelAllCourses()">cencel all courses</button>
+        </div>
+    </div>
+    <app-add-course (save)="addNewCourse($event)"></app-add-course>
+
+</div>

@@ -1,0 +1,9 @@
+<header>
+<h1>
+    courses - the site by chaya krashinski
+</h1>
+</header>
+
+<app-login *ngIf="loginDisplay"  (formDontShow)="formDontShow()"></app-login>
+<!-- -->
+<app-register *ngIf="!loginDisplay" ></app-register>

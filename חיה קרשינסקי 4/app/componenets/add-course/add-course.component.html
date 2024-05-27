@@ -1,0 +1,31 @@
+<form [formGroup]="courseForm">
+    <h1>add new course</h1>
+    <p>please fill the course details:</p>
+    <div>
+        <label for="courseName" >course name: </label>
+        <input  formControlName="courseName" name="courseName" type="text" id="courseName">
+    </div>
+    <div>
+        <label  for="hours">hours of course: </label>
+        <input  formControlName="hours" name="hours" type="number" id="hours" min="1">
+    </div>
+    <div>
+        <label for="type">type: </label>
+        <select  id="type" formControlName="type" name="type">
+            <option  *ngFor="let t of getTypes()">{{t}}</option>
+        </select>
+    </div>
+    <div>
+        <label for="dateOfBegining">date of begining: </label>
+        <input  formControlName="dateOfBegining" name="dateOfBegining"  type="Date" id="dateOfBegining">
+    </div>
+    <div>
+        <label for="teacherName">teacher name: </label>
+        <input  formControlName="teacherName" name="teacherName"  type="text" id="teacherName">
+    </div>
+    <br>
+    <div>
+        <button type="submit" (click)="addCourse()">add course</button>
+    </div>
+
+</form>

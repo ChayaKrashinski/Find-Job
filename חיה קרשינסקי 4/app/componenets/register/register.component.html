@@ -1,0 +1,23 @@
+<div>
+    <div>
+        <h1>our courses:</h1>
+        <div *ngFor="let c of isRegister">
+            <app-course [data]=c.course [isRegister]=c.isRegister (register)="updateRegister($event)"></app-course>
+        </div>
+        <div>
+            <h3>find date course</h3>
+            <label for="findCourse">press the name of course</label>
+            <input  type="text" id="findCourse">
+            <button (click)="findDate()">find</button>
+        </div>
+        <div>
+            <h1>your courses:</h1>
+            <div id="r" *ngFor="let r of registerList">
+                <h4>{{r?.courseName}}</h4>
+            </div>
+            <button (click)="cencelAllCourses()">cencel all courses</button>
+        </div>
+    </div>
+    <app-add-course (saveNewCourse)="saveNewCourse($event)"></app-add-course>
+
+</div>
