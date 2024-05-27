@@ -1,3 +1,3 @@
 # Find-Job
 
-## the client side
+## the server side
